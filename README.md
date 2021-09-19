@@ -1,5 +1,5 @@
 # **Welcome to the Austin AniML Rescue SQL Database Section!**
-## The database for this project has been maintained by Melinda Malone using PostgreSQL and pgAdmin
+###### The database for this project has been maintained by Melinda Malone using PostgreSQL, pgAdmin, Python, Pandas, and SQL Alchemy
 
 ## Where is the data from?
 
