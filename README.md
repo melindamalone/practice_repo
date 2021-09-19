@@ -7,7 +7,7 @@
 - Austin Animal Center Outcomes dataset exported as csv file from [Austin Animal Center Outcomes](https://dev.socrata.com/foundry/data.austintexas.gov/9t4d-g238)
 - Export of intakes and outcomes csv files occurred on 31-AUG-2021
 
-## Data Observations
+## Initial Data Observations
 - Original intakes file contained 130,617 rows of data; 106,233 rows remained after duplicate Animal ID's dropped from dataset
 - Original outcomes file contained 130,647 rows of data; 106,266 rows remained after duplicate Animal ID's dropped from dataset
 - Duplicate Animal ID's existed in original datasets due to animal recurringly leaving owner then being picked up by owner on more than one occasion
@@ -31,7 +31,7 @@ cleaned_intakes_df.to_sql(name='intakes', con=engine, if_exists='replace')
 cleaned_outcomes_df.to_sql(name='outcomes', con=engine, if_exists='replace')
 ```
 
-## Actions taken in PostgreSQL Database
+## Actions taken in PostgreSQL Database using CREATE TABLE, INNER JOIN, and aliases
 - intakes and outcomes tables were created from csv datasets
 - The secondary column of date and time data dropped from dataset
 - Duplicates of animal_name, animal_type, breed, and color dropped from final dataset as these columns are repeated in both intakes and outcomes files
@@ -96,4 +96,25 @@ INTO intakes_outcomes
 FROM intakes AS i
 INNER JOIN outcomes AS o
 ON i.animal_id = o.animal_id;
+```
+
+## Python code used to import intakes_outcomes table from PostgreSQL Database to Machine Learning Model
+
+```
+# Import intakes_outcomes table from PostgreSQL database to machine learning model
+
+import pandas as pd
+from sqlalchemy import create_engine
+from config import db_password
+
+db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/Austin_AniML_Rescue"
+
+engine = create_engine(db_string)
+
+query = "SELECT * FROM intakes_outcomes"
+
+raw_df = pd.read_sql(query, con=engine, columns=["animal_id", "animal_type", "breed", "color", "intake_type", "date_of_birth",
+                                                "intake_date", "intake_condition", "sex_upon_intake", "age_upon_intake",
+                                                "outcome_date", "outcome_type", "outcome_subtype", "sex_upon_outcome",
+                                                "age_upon_outcome"])
 ```
