@@ -76,7 +76,7 @@ CREATE TABLE outcomes (
 ```
 ```
 --Inner join on intakes and outcomes by animal_id using alias
---Drop intake_date_2, outcome_date_2, animal_name, and found_location as unnecessary for Machine Learning model
+--Drop intake_date_2, outcome_date_2, animal_name, and found_location
 SELECT i.animal_id,
 	i.animal_type,
 	i.breed,
