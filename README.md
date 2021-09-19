@@ -117,5 +117,6 @@ raw_df = pd.read_sql(query, con=engine, columns=["animal_id", "animal_type", "br
 						"color", "intake_type", "date_of_birth", 
 						"intake_date", "intake_condition", "sex_upon_intake", 
 						"age_upon_intake", "outcome_date", "outcome_type", 
-						"outcome_subtype", "sex_upon_outcome", "age_upon_outcome"])
+						"outcome_subtype", "sex_upon_outcome", 
+						"age_upon_outcome"])
 ```
