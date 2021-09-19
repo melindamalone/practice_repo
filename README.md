@@ -16,7 +16,7 @@
 
 ## Austin AniML Rescue Quick Database Diagram
 - The database diagram for this project was created using [Quick DBD](https://www.quickdatabasediagrams.com/)
-![](Images/QuickDBD_Austin_AniML_Rescue.PNG)
+![](Images/QuickDBD_Austin_AniML_Rescue.png)
 
 ## Actions taken for database prep using Python, Pandas, and SQL Alchemy
 - Renamed columns to be specific to intakes or outcomes data
