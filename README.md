@@ -1,5 +1,5 @@
 # **Welcome to the Austin AniML Rescue SQL Database Section!**
-- The database for this project has been maintained by Melinda Malone using PostgreSQL, pgAdmin, Python, Pandas, and SQL Alchemy
+- The database for this project has been maintained by Melinda Malone using PostgreSQL, pgAdmin, Python, Pandas, SQL Alchemy, and Quick DBD
 
 ## Where is the data from?
 
@@ -13,6 +13,10 @@
 - Duplicate Animal ID's existed in original datasets due to animal recurringly leaving owner then being picked up by owner on more than one occasion
 - The DateTime and MonthYear columns in intakes file contain exact same date and time data
 - The DateTime and MonthYear columns in outcomes file contain exact same date and time data
+
+## Austin AniML Rescue Quick Database Diagram
+- The database diagram for this project was created using [Quick DBD](https://www.quickdatabasediagrams.com/)
+![](Images/QuickDBD_Austin_AniML_Rescue.PNG)
 
 ## Actions taken for database prep using Python, Pandas, and SQL Alchemy
 - Renamed columns to be specific to intakes or outcomes data
