@@ -1,13 +1,10 @@
-# **Welcome to the Austin AniML Rescue SQL Database Section! **
-
+# **Welcome to the Austin AniML Rescue SQL Database Section!**
 ## The database for this project has been maintained by Melinda Malone using PostgreSQL and pgAdmin
 
 ## Where is the data from?
 
-- Austin Animal Center Intakes dataset exported as csv file from: https://dev.socrata.com/foundry/data.austintexas.gov/wter-evkm
-
-- Austin Animal Center Outcomes dataset exported as csv file from: https://dev.socrata.com/foundry/data.austintexas.gov/9t4d-g238
-
+- Austin Animal Center Intakes dataset exported as csv file from:https://dev.socrata.com/foundry/data.austintexas.gov/wter-evkm
+- Austin Animal Center Outcomes dataset exported as csv file from:https://dev.socrata.com/foundry/data.austintexas.gov/9t4d-g238
 - Export of intakes and outcomes csv files occurred on 31-AUG-2021
 
 ## Data Observations
