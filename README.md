@@ -3,8 +3,8 @@
 
 ## Where is the data from?
 
-- Austin Animal Center Intakes dataset exported as csv file from:https://dev.socrata.com/foundry/data.austintexas.gov/wter-evkm
-- Austin Animal Center Outcomes dataset exported as csv file from:https://dev.socrata.com/foundry/data.austintexas.gov/9t4d-g238
+- Austin Animal Center Intakes dataset exported as csv file from [Austin Animal Center Intakes](https://dev.socrata.com/foundry/data.austintexas.gov/wter-evkm)
+- Austin Animal Center Outcomes dataset exported as csv file from [Austin Animal Center Outcomes](https://dev.socrata.com/foundry/data.austintexas.gov/9t4d-g238)
 - Export of intakes and outcomes csv files occurred on 31-AUG-2021
 
 ## Data Observations
@@ -14,10 +14,63 @@
 - The DateTime and MonthYear columns in intakes file contain exact same date and time data
 - The DateTime and MonthYear columns in outcomes file contain exact same date and time data
 
-## Actions taken for database prep
+## Actions taken for database prep using Python, Pandas, and SQL Alchemy
 - Renamed columns to be specific to intakes or outcomes data
 - Renamed columns to follow Python naming conventions by adding underscores in place of spaces
+- Dropped duplicated Animal ID's as the Machine Learning model did not require these animals
+- Imported cleaned intakes and outcomes DataFrames into PostgreSQL database
+
+```
+# Import cleaned intakes and outcomes DataFrames into PostgreSQL database
+
+db_string = f"postgresql://postgres:{db_password}@127.0.0.1:5432/Austin_AniML_Rescue"
+
+engine = create_engine(db_string)
+
+cleaned_intakes_df.to_sql(name='intakes', con=engine, if_exists='replace')
+cleaned_outcomes_df.to_sql(name='outcomes', con=engine, if_exists='replace')
+```
+
+## Actions taken in PostgreSQL Database
+- intakes and outcomes tables were created from csv datasets
 - The secondary column of date and time data dropped from dataset
 - Duplicates of animal_name, animal_type, breed, and color dropped from final dataset as these columns are repeated in both intakes and outcomes files
 - animal_name and found_location dropped from final dataset as these columns are incomplete and unnecessary for Machine Learning model
 - 105,367 rows of data were successfully joined in SQL database using INNER JOIN to create intakes_outcomes table
+
+```
+-- Create table for Austin_AniML_Rescue Intakes
+CREATE TABLE intakes (
+	animal_id VARCHAR NOT NULL,
+	animal_name VARCHAR,
+	intake_date DATE NOT NULL,
+	intake_date_2 DATE NOT NULL,
+	found_location VARCHAR NOT NULL,
+	intake_type VARCHAR NOT NULL,
+	intake_condition VARCHAR NOT NULL,
+	animal_type VARCHAR NOT NULL,
+	sex_upon_intake VARCHAR,
+	age_upon_intake VARCHAR NOT NULL,
+	breed VARCHAR NOT NULL,
+	color VARCHAR NOT NULL,
+	PRIMARY KEY (animal_id),
+	UNIQUE (animal_id)
+);
+
+-- Create table for Austin_AniML_Rescue Outcomes
+CREATE TABLE outcomes (
+	animal_id VARCHAR NOT NULL,
+	animal_name VARCHAR,
+	outcome_date DATE NOT NULL,
+	outcome_date_2 DATE NOT NULL,
+	date_of_birth DATE NOT NULL,
+	outcome_type VARCHAR,
+	outcome_subtype VARCHAR,
+	animal_type VARCHAR NOT NULL,
+	sex_upon_outcome VARCHAR,
+	age_upon_outcome VARCHAR,
+	breed VARCHAR NOT NULL,
+	color VARCHAR NOT NULL,
+	PRIMARY KEY (animal_id)
+);
+```
