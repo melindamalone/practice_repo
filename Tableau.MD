@@ -2,7 +2,7 @@
 - The preliminary stages of the Tableau Dashboard and Google Slides Storyboard has been developed by Melinda Malone
 
 ## Google Slides Storyboard
-The Google Slides Storyboard can be accessed [here](https://docs.google.com/presentation/d/1I76xwzYE5ayG0caMRfxuqka7FQG8sYJ4AU3SiddDGRE/edit#slide=id.p)
+The Google Slides Storyboard can be accessed [here](https://docs.google.com/presentation/d/1I76xwzYE5ayG0caMRfxuqka7FQG8sYJ4AU3SiddDGRE/edit#slide=id.p).
 
 ## Austin AniML Rescue in Tableau Public
 [Tableau Public](https://public.tableau.com/en-us/s/) will be the data visualization tool used to create the final dashboard for the Austin AniML Rescue machine learning project.
